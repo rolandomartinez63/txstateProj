@@ -1,0 +1,104 @@
+#!/bin/bash
+echo CS 4350 - Unix Systems Programming
+echo Rolando Martinez
+echo Serial Number: 33
+echo Assignment Number: HW 1
+echo Due Date: 2/18/2019
+echo 
+echo The function of this script is to:
+echo 1. Diplay the numbers. 
+echo 2. Add and mulitply the 3 numbers.
+echo 3. Find all the odd and even numbers between 1 and the first argument. 
+echo 4. Indicate wwhether the numbers that you entered from the keyboard is 1, 2 or 3 digits.
+echo 5. Determine whether or not each one of the the arguments is a prime number.
+echo
+#DISPLAY NUMBERS
+echo The numbers are $1 $2 $3
+echo
+#cALCULATE THE TOTAL
+echo $1 + $2 + $3 = $(($1 + $2 + $3))
+echo 
+#CALCULATE THE PRODUCT
+product=$(($1 * $2 * $3))
+echo $1 x $2 x $3 = $product
+echo
+count=1
+temp=$1
+i=0
+x=0
+#Look for the odds and evens and put them into an array
+while [ $count -lt $(($temp + 1)) ]
+do
+ if [ $((count%2)) -eq 0 ];
+ then
+# hold the evens into the even array
+ even[i]=$count
+ i=$(($i + 1))
+ count=$((count + 1))
+ else
+# hold the odds into an odd array 
+ odd[x]=$count
+  x=$((x + 1))
+  count=$((count + 1))
+ fi
+done
+#display the odds
+ echo All odd numbers between 1 and $1
+ echo "${odd[*]}"
+ echo 
+# display the evens
+ echo All even numbers between 1 and $1
+ echo "${even[*]}" 
+ echo 
+ #check for the number of digits
+ echo $1 is a ${#1} digit number.
+ echo 
+ echo $2 is a ${#2} digit number.
+ echo 
+ echo $3 is a ${#3} digit number.
+ echo
+
+
+#start of the prime function
+prime(){
+ if [[ $1 -eq 2 ]] || [[ $1 -eq 3 ]]; then
+   return 1 #prime
+ fi
+  if [[ $(($1 % 2)) -eq 0 ]] || [[ $(($1 % 3)) -eq 0 ]];then
+   return 0 #prime
+ fi
+ a=5; b=2
+ while [[ $((a * a)) -le $1 ]]; do
+  if [[ $(($1 % a)) -eq 0 ]]; then
+    return 0
+   fi
+   a=$((a + b))
+   b=$((6 - b))
+  done
+  return 1 #prime
+}
+#call the funct
+prime $1
+if [[ $? -eq 0 ]]; then
+  echo $1 not prime
+else
+  echo $1 it is prime
+fi
+
+prime $2
+if [[ $? -eq 0 ]]; then
+  echo $2 not prime
+else
+  echo $2 it is prime
+fi
+
+prime $3
+if [[ $? -eq 0 ]]; then
+  echo $3 not prime
+else
+  echo $3 it is prime
+fi
+echo
+echo End of Script
+echo
+echo Rolando - 2--15--2019

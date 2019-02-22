@@ -1,0 +1,14 @@
+#!/bin/sh
+echo
+echo This script to check whether or not a file
+echo does exist in the current directory
+echo
+echo Enter a file name
+read filename
+if [ -f $filename ]
+then 
+ echo "file $filename does exist"
+else
+ echo "file $filename does not exist"
+fi 
+exit 0

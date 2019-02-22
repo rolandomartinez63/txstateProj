@@ -1,0 +1,34 @@
+#!/bin/bash
+input(){
+ read -p "enter 1 " int1
+ read -p "enter 2 " int2
+
+}
+
+prompt(){
+ read -p " wana do this again? " ans
+ if [ans== "y"]
+  continue
+ else
+  break
+ fi
+}
+
+echo "this is a calculator. add, sub, etc..."
+echo "use A,B,C OR D"
+while (true)
+ do
+  read -p choice
+  case $choice 
+  in 
+   #UPPER CASE AND LOWER CASE 
+    [a A] input
+    result=$(($int1 + $int2));;
+    [a B] input
+    result=$(($int1 + $int2));;
+
+ *) echo "this is the end
+esac 
+promt
+done
+exit 0

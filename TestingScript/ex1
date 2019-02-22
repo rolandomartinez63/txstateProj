@@ -1,0 +1,14 @@
+#!/bin/bash
+x=17
+
+foo(){
+ echo "in foo x = " $x
+ echo "in foo y = " $y
+ echo "in foo z = " $z
+ set abc
+ echo "in foo \$1 = " $1
+}
+y=11
+foo $x $y $z $1
+
+z = 13
