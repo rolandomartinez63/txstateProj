@@ -48,7 +48,10 @@ int key =30;
 	}
 	
 	//Create a search function to search through what the user enters and the arrays
-	
+	for (int i=0; i<MAX; i++){
+		//array1[1][i] = array1[0][i];
+		printf("print array results--------- [1][%d]....%c\n",i, array1[1][i]);
+	}	
 	
 	
 return 0;
