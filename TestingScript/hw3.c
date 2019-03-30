@@ -3,11 +3,15 @@
 #define MAX 94
 
 
-void search(char array1[][MAX], char crypt[], char input[], int wants, char lookfor)//wants is if you want to encrypt or decrypt (0 or 1)
+void search(char array1[][MAX], char crypt[], char input[], int wants, char choice[])//wants is if you want to encrypt or decrypt (0 or 1)
 {
 	int count=0;
+	int size=0;
 	int temp=0;
-	for (int i=0; i<7; i++)
+	while (input[size] != '\0')
+		size++;
+	
+	for (int i=0; i<size; i++)
 	{
 		for (int x=0; x<MAX; x++)
 		{
@@ -24,9 +28,7 @@ void search(char array1[][MAX], char crypt[], char input[], int wants, char look
 	//Length of the results. 
 	while (crypt[count] != '\0')
 		count ++;
-	
-	
-	printf("Length of crtpy..%d", count);
+
 
 }
 
@@ -52,7 +54,7 @@ void encryp(char array1[][MAX], int key)
 	
 		for (int i=0; i<MAX; i++){
 		//array1[1][i] = array1[0][i];
-		printf("print array resultssssssssssssssssssss--------- [1][%d]....%c\n",i, array1[1][i]);
+		//printf("print array resultssssssssssssssssssss--------- [1][%d]....%c\n",i, array1[1][i]);
 	}	
 /*
 
@@ -64,7 +66,7 @@ void encryp(char array1[][MAX], int key)
 */
 }
 
-void poparr()
+int poparr(char choice[])
 {
 	int key;
 	char input[20]={'\0'};
@@ -74,15 +76,26 @@ void poparr()
 					'0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 
 					'!', '"', '#', '$', '%', '&', '\x27', '(', ')', '*', '+', ',', '-', '.',
 					'/', ':',';', '<', '=', '>', '?', '@', '[', '\x5c', ']', '^', '_', '`', '{', '|', '}', '~', '\0' };
+	
+	printf("Enter your message: \n");
+	scanf("%s", input); 	
+
+	printf("Enter the key number (1-93)\n");
 	//Gets the users input.
 	scanf("%d", &key);
+	
+	if(key<0 || key>93)
+	{
+		printf("Invalid Key Number\n\n");
+		return 0;
+	}
+	else
 	encryp(array1, key);
 	printf("------------------------\n");
 		
-	scanf("%19s", input); 	
 	int wants=0;
-	char lookfor='o';
-	search(array1, crypt, input, wants, lookfor); 
+	//char lookfor='o';
+	search(array1, crypt, input, wants, choice); 
 	
 	
 }
@@ -117,30 +130,41 @@ int key =20;
 
 	char choice[20]={'\0'};
 	
+	printf("Welcome to cryptography ");
+
+	
 	printf("What would you like to do to a message? (encrypt, decrypt, exit)\n");
 	printf("Enter your choice: ");
 	scanf("%19s", choice);
 	
 	while(strcmp(choice,"exit")!=0)
 	{
+
 		if(strcmp(choice,"encrypt")==0)
 		{
 			printf("Enter your choice: encrypt\n");
-			scanf("%19s", choice);
+			poparr(choice);
+
 		}
 		else if(strcmp(choice,"decrypt")==0)
 		{
 			printf("Enter your choice: decrypt\n");
-
-			scanf("%19s", choice);
+			poparr(choice);
 		}
 		else
-			printf("That is an invalid option\n");
-			scanf("%19s", choice);	
+			printf("Invalid message\n\n");
 		
+		printf("What would you like to do to a message? (encrypt, decrypt, exit)\n");
+		printf("Enter your choice: ");
+		scanf("%19s", choice);	
+
 	}
 	
-	poparr();
+		printf("Rolando Martinez Security Systems\n");
+		printf("3-27-2019");
+
+	
+	//poparr();
 
 
 
