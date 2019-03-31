@@ -3,6 +3,21 @@
 #define MAX 94
 
 
+void takestring(char input[])
+{
+    	char str[100];
+    	scanf("%[^'\n']%*c",str);
+    	printf("%s\n",str);
+		
+		for(int i=0; i<20; i++)
+		{
+			input[i]=str[i];
+			
+		}
+		printf("%s\n",input);
+
+}
+
 void search(char array1[][MAX], char crypt[], char input[], int wants, char choice[])//wants is if you want to encrypt or decrypt (0 or 1)
 {
 	int count=0;
@@ -18,13 +33,13 @@ void search(char array1[][MAX], char crypt[], char input[], int wants, char choi
 			if(array1[0][x]==input[i])
 			{
 				crypt[i]=array1[1][x];
-				//printf("Output the array1[0]... %c and array1[1]... %c\n", array1[0][x], array1[1][x]);
+				printf("Output the array1[0]... %c and array1[1]... %c\n", array1[0][x], array1[1][x]);
 				
 			}
 		}
 		printf("what is in the array of ouputs...%c\n", crypt[i]);
 	}
-
+	printf("\n");
 	//Length of the results. 
 	while (crypt[count] != '\0')
 		count ++;
@@ -70,6 +85,7 @@ int poparr(char choice[])
 {
 	int key;
 	char input[20]={'\0'};
+	char str[100];
 	char crypt[200];
 	char array1[2][MAX] = {'A', 'B', 'C', 'D', 'E', 'F','G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z',
 					'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z',
@@ -78,7 +94,9 @@ int poparr(char choice[])
 					'/', ':',';', '<', '=', '>', '?', '@', '[', '\x5c', ']', '^', '_', '`', '{', '|', '}', '~', '\0' };
 	
 	printf("Enter your message: \n");
-	scanf("%s", input); 	
+	takestring(input); 	
+    printf("%s\n",input);
+
 
 	printf("Enter the key number (1-93)\n");
 	//Gets the users input.
@@ -131,12 +149,18 @@ int key =20;
 	char choice[20]={'\0'};
 	
 	printf("Welcome to cryptography ");
-
+	takestring(choice);
 	
+	printf("THE OUTPUT.....");
+	printf("%s\n",choice);
+	printf("---------------------------------------\n");
+
+
 	printf("What would you like to do to a message? (encrypt, decrypt, exit)\n");
 	printf("Enter your choice: ");
-	scanf("%19s", choice);
-	
+	//scanf("%19s", choice);
+	scanf("%[^\n]%*c",choice);
+
 	while(strcmp(choice,"exit")!=0)
 	{
 
@@ -163,7 +187,7 @@ int key =20;
 		printf("Rolando Martinez Security Systems\n");
 		printf("3-27-2019");
 
-	
+
 	//poparr();
 
 
