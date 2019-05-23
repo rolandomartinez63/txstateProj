@@ -42,12 +42,21 @@ p {
 	margin-bottom: -6px;
 }
 
-
+#name h2 {
+	font-size: 2em;
+	margin-left: 2px;
+	font-family: 'Rokkitt', Helvetica, Arial, sans-serif;
+}
 
 #mainArea {
 	padding: 0 40px;
 }
 
+#headshot {
+	width: 12.5%;
+	float: left;
+	margin-right: 30px;
+}
 
 #headshot img {
 	width: 100%;
@@ -76,9 +85,12 @@ p {
 }
 
 
+#contactDetails ul li a:hover { 
+	color: #cf8a05;
+}
 
 section {
-	border-top: 1px solid #000;
+	border-top: 1px solid #dedede;
 	padding: 20px 0 0;
 }
 
@@ -104,7 +116,7 @@ section:last-child {
 	font-family: 'Rokkitt', Helvetica, Arial, sans-serif;
 	font-style: italic;
 	font-size: 1.5em;
-	color: #fffff;
+	color: #cf8a05;
 }
 
 .sectionContent h2 {
@@ -115,7 +127,7 @@ section:last-child {
 
 .subDetails {
 	font-size: 0.8em;
-	font-style: oblique;
+	font-style: italic;
 	margin-bottom: 3px;
 }
 
